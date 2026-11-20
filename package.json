@@ -3,6 +3,7 @@
   "displayName": "Caide Inliner",
   "description": "Use caide-inliner in Visual Studio Code to inline C/C++ code and remove unused functions.",
   "version": "1.0.0",
+  "publisher": "avighnac",
   "engines": {
     "vscode": "^1.146.0"
   },
