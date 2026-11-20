@@ -1,0 +1,83 @@
+{
+  "name": "caide-inliner",
+  "displayName": "Caide Inliner",
+  "description": "Use caide-inliner in Visual Studio Code to inline C/C++ code and remove unused functions.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.146.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "C",
+    "C++",
+    "Caide",
+    "Competitive Programming"
+  ],
+  "activationEvents": [
+    "onLanguage:c",
+    "onLanguage:cpp"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "caide-inliner.inline",
+        "title": "caide-inliner: Inline current C/C++ file"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "caide-inliner configuration",
+      "properties": {
+        "caide-inliner.executable": {
+          "type": "string",
+          "default": "caide-inliner",
+          "description": "caide-inliner executable path (see GitHub to install)"
+        },
+        "caide-inliner.maxSubsequentEmptyLines": {
+          "type": "integer",
+          "default": 1,
+          "minimum": -1,
+          "description": "The maximum number of subsequent empty lines (or -1 for no limit)"
+        },
+        "caide-inliner.clangCompilationOptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Options passed to clang while parsing C/C++ code"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.146.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "typescript-eslint": "^8.61.1",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.3",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avighnac/vscode-caide-inliner"
+  },
+  "license": "MIT"
+}
